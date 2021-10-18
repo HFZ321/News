@@ -18,9 +18,16 @@ class NewsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testApi(){
+        let expectation = self.expectation(description: "must greater than 0")
+        var result: NYTime?
+        ApiHandler.shared.getData(urlString: Constant.newsUrl) { response in
+            result = response
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 10) { error in
+            XCTAssertGreaterThan(result?.results?.count ?? 0, 0)
+        }
     }
 
     func testPerformanceExample() throws {
