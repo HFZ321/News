@@ -28,13 +28,7 @@ class NewsTableViewCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         dateLabel.numberOfLines = 0
         authorLabel.numberOfLines = 0
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let dateTranslate = DateFormatter()
-        dateTranslate.dateFormat = "MMM dd,yyyy"
-        if let Date = dateFormatter.date(from: date) {
-            dateLabel.text = dateTranslate.string(from: Date)
-        }
+        dateLabel.dateFormat(date: date)
         cellImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage())
 
     }

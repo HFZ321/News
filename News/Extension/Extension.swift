@@ -22,5 +22,16 @@ extension UIImageView{
                 
             }
         }
+}
+extension UILabel{
+    func dateFormat(date:String){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let dateTranslate = DateFormatter()
+        dateTranslate.dateFormat = "MMM dd,yyyy"
+        if let Date = dateFormatter.date(from: date) {
+            self.text = dateTranslate.string(from: Date)
+        }
     }
+}
 

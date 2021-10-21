@@ -30,7 +30,9 @@ class CustomSearchBar: UIView, UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count != 0{
+        if searchText.count == 0{
+            delegate?.endSearching()
+        }else{
             delegate?.startSearching(currText: searchText)
         }
     }

@@ -17,4 +17,19 @@ class MainViewModel{
             }
         }
     }
+    func getTitle(index:Int) -> String{
+        return results[index].title ?? ""
+    }
+    func getUrl(index:Int) -> String{
+        return results[index].url ?? ""
+    }
+    func getAuthor(index:Int) -> String{
+        return results[index].byline ?? ""
+    }
+    func getDate(index:Int) -> String{
+        return results[index].published_date ?? ""
+    }
+    func getMediaInfo(index:Int) -> String{
+        return results[index].multimedia?[0].url ?? ""
+    }
 }

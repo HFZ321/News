@@ -23,11 +23,12 @@ class CustomNewsTable: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NewsTableViewCell
-        var new = model.results[indexPath.row]
+        var new = model
         if isSearch{
-            new = filterModel.results[indexPath.row]
+            new = filterModel
         }
-        cell?.setupLabel(title: new.title ?? "", date: new.published_date ?? "", author: new.byline ?? "", url: new.multimedia?[0].url ?? "")
+        let index = indexPath.row
+        cell?.setupLabel(title: new.getTitle(index: index), date: new.getDate(index: index), author: new.getAuthor(index: index), url: new.getMediaInfo(index: index))
         return cell ?? NewsTableViewCell()
         
     }
